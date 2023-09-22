@@ -25,7 +25,7 @@ public class DocenteTest {
 	}
 	
 	@Test
-	public void asignarDocentesAComision() {
+	public void asignarDocentesAComisionYQueNoPuedanHaberRepetidosEnLaMismaComision() {
 		Universidad unlam = new Universidad("unlam");
 		Integer dniDocente = 1;
 		Boolean resultadoEsperado = false;

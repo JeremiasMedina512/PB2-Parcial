@@ -19,7 +19,7 @@ public class MateriaTest {
 		Universidad unlam = new Universidad("Unlam");
 		Materia materia = new Materia(idMateria, nombreMateria);
 
-		resultadoEsperado = unlam.agregarMaterias(materia);
+		resultadoEsperado = unlam.agregarMateria(materia);
 
 		assertTrue(resultadoEsperado);
 	}
@@ -34,8 +34,8 @@ public class MateriaTest {
 		Materia materiaPrimera = new Materia(idMateria, nombreMateria);
 		Materia materiaSegunda = new Materia(idMateria, nombreMateria);
 
-		unlam.agregarMaterias(materiaPrimera);
-		resultadoEsperado = unlam.agregarMaterias(materiaSegunda);
+		unlam.agregarMateria(materiaPrimera);
+		resultadoEsperado = unlam.agregarMateria(materiaSegunda);
 
 		assertFalse(resultadoEsperado);
 	}
@@ -52,9 +52,9 @@ public class MateriaTest {
 		Materia materiaPrimera = new Materia(idMateriaPrimera, nombreMateriaPrimera);
 		Materia materiaSegunda = new Materia(idMateriaSegunda, nombreMateriaSegunda);
 
-		unlam.agregarMaterias(materiaPrimera);
-		unlam.agregarMaterias(materiaSegunda);
-		resultadoEsperado = unlam.asginarMateriaCorrelativa(materiaSegunda.getIdMateria(),
+		unlam.agregarMateria(materiaPrimera);
+		unlam.agregarMateria(materiaSegunda);
+		resultadoEsperado = unlam.agregarCorrelatividad(materiaSegunda.getIdMateria(),
 				materiaPrimera.getIdMateria());
 
 		assertTrue(resultadoEsperado);
@@ -69,13 +69,13 @@ public class MateriaTest {
 		Boolean resultadoEsperado = false;
 
 		Universidad unlam = new Universidad("Unlam");
-		Materia materiaPrimera = new Materia(idMateriaPrimera, nombreMateriaPrimera);
-		Materia materiaSegunda = new Materia(idMateriaSegunda, nombreMateriaSegunda);
+		Materia materiaCorrelativa = new Materia(idMateriaPrimera, nombreMateriaPrimera);
+		Materia materia = new Materia(idMateriaSegunda, nombreMateriaSegunda);
 
-		unlam.agregarMaterias(materiaPrimera);
-		unlam.agregarMaterias(materiaSegunda);
-		resultadoEsperado = unlam.eliminarMateriaCorrelativa(materiaSegunda.getIdMateria(),
-				materiaPrimera.getIdMateria());
+		unlam.agregarMateria(materiaCorrelativa);
+		unlam.agregarMateria(materia);
+		resultadoEsperado = unlam.eliminarCorrelatividad(materia.getIdMateria(),
+				materiaCorrelativa.getIdMateria());
 
 		assertTrue(resultadoEsperado);
 	}

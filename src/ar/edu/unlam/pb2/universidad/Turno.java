@@ -1,5 +1,5 @@
 package ar.edu.unlam.pb2.universidad;
 
-public class Turno {
-
+public enum Turno {
+	Mañana, Tarde, Noche
 }

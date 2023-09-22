@@ -22,7 +22,7 @@ public class Universidad {
 		this.notas = new ArrayList<>();
 	}
 
-	public Boolean agregarMaterias(Materia materia) {
+	public Boolean agregarMateria(Materia materia) {
 		if (this.materias.size() != 0) {
 			for (int i = 0; i < this.materias.size(); i++) {
 				if (this.materias.get(i).getIdMateria().equals(materia.getIdMateria())) {
@@ -33,7 +33,7 @@ public class Universidad {
 		return this.materias.add(materia);
 	}
 
-	public Boolean agregarAlumnos(Alumno alumno) {
+	public Boolean agregarAlumno(Alumno alumno) {
 		if (this.alumnos.size() != 0) {
 			for (int i = 0; i < this.alumnos.size(); i++) {
 				if (this.alumnos.get(i).getIdAlumno().equals(alumno.getIdAlumno())) {
@@ -44,22 +44,15 @@ public class Universidad {
 		return this.alumnos.add(alumno);
 	}
 
-	public Boolean crearCicloLectivo(CicloLectivo cicloLectivo) {
-		if (this.cicloLectivos.add(cicloLectivo)) {
-			return true;
-		}
-		return false;
-	}
-
 	public Boolean agregarComision(Comision comision) {
-		if (this.comisiones.size() != 0) {
-			for (int i = 0; i < this.comisiones.size(); i++) {
-				if (this.comisiones.get(i).equals(comision)) {
+		if (this.cicloLectivos.size() != 0) {
+			for (int i = 0; i < this.cicloLectivos.size(); i++) {
+				if (this.cicloLectivos.get(i).equals(comision)) {
 					return false;
 				}
 			}
 		}
-		return this.comisiones.add(comision);
+		return this.cicloLectivos.add(comision);
 	}	
 
 	public Boolean crearAula(Aula aula) {
@@ -84,7 +77,7 @@ public class Universidad {
 		return false;
 	}
 
-	public Boolean asginarMateriaCorrelativa(Integer pb1, Integer pb2) {
+	public Boolean agregarCorrelatividad(Integer pb1, Integer pb2) {
 		Materia materiaPb1 = null;
 		Materia materiaPb2 = null;
 		Boolean valorDeRetorno = false;
@@ -103,7 +96,7 @@ public class Universidad {
 		return valorDeRetorno;
 	}
 
-	public Boolean eliminarMateriaCorrelativa(Integer idMateria, Integer idMateriaCorrelativaAEliminar) {
+	public Boolean eliminarCorrelatividad(Integer idMateria, Integer idMateriaCorrelativaAEliminar) {
 		Materia materiaPb1 = null;
 		Materia materiaPb2 = null;
 		Boolean valorDeRetorno = false;
@@ -121,6 +114,20 @@ public class Universidad {
 
 		return valorDeRetorno;
 
+	}
+
+	public Boolean agregarCicloLectivo(CicloLectivo cicloLectivo) {
+		if (this.cicloLectivos.size() != 0) {
+			for (int i = 0; i < this.cicloLectivos.size(); i++) {
+				if (this.cicloLectivos.get(i).equals(cicloLectivo)){
+					return false;
+				}
+				if(this.cicloLectivos.get(i).lasFechasSeSuperponen(cicloLectivo)) {
+					return false;
+				}
+			}
+		}
+		return this.cicloLectivos.add(cicloLectivo);
 	}
 
 }

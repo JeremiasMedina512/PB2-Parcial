@@ -38,5 +38,25 @@ public class NotaTest {
 		assertFalse(primerResultadoEsperado);
 		assertFalse(segundoResultadoEsperado);
 	}
+	
+	@Test //INCOMPLETO
+	public void obtenerNotaDeUnaMateriaTeniendoElIdDelAlumno() {
+		Universidad unlam = new Universidad("unlam");
+		Integer primerValor = 0;
+		Integer segundoValor = 11;
+		Integer idCurso;
+		Integer idAlumno;
+		
+		Nota primeraNota = new Nota(primerValor);
+		Nota segundaNota = new Nota(segundoValor);
+		Boolean primerResultadoEsperado = false;
+		Boolean segundoResultadoEsperado = false;
+
+		primerResultadoEsperado =unlam.registrarNota(primeraNota);
+		segundoResultadoEsperado = unlam.registrarNota(segundaNota);
+		
+		assertFalse(primerResultadoEsperado);
+		assertFalse(segundoResultadoEsperado);
+	}
 
 }
