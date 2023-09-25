@@ -44,17 +44,6 @@ public class Universidad {
 		return this.alumnos.add(alumno);
 	}
 
-	public Boolean agregarComision(Comision comision) {
-		if (this.cicloLectivos.size() != 0) {
-			for (int i = 0; i < this.cicloLectivos.size(); i++) {
-				if (this.cicloLectivos.get(i).equals(comision)) {
-					return false;
-				}
-			}
-		}
-		return this.cicloLectivos.add(comision);
-	}	
-
 	public Boolean crearAula(Aula aula) {
 		return this.aulas.add(aula);
 	}
@@ -119,15 +108,42 @@ public class Universidad {
 	public Boolean agregarCicloLectivo(CicloLectivo cicloLectivo) {
 		if (this.cicloLectivos.size() != 0) {
 			for (int i = 0; i < this.cicloLectivos.size(); i++) {
-				if (this.cicloLectivos.get(i).equals(cicloLectivo)){
+				if (this.cicloLectivos.get(i).equals(cicloLectivo)) {
 					return false;
 				}
-				if(this.cicloLectivos.get(i).lasFechasSeSuperponen(cicloLectivo)) {
+				if (this.cicloLectivos.get(i).lasFechasSeSuperponen(cicloLectivo)) {
 					return false;
 				}
 			}
 		}
 		return this.cicloLectivos.add(cicloLectivo);
+	}
+
+	public Boolean agregarComision(CicloLectivo cicloLectivo, Comision comision) {
+		ArrayList<Comision> comisiones = null;
+		Materia materia = null;
+		Turno turno = null;
+		if (!exsiteCicloLectivoEnElArray(cicloLectivo).equals(null)) {
+			comisiones = cicloLectivo.getComisiones();
+			for (int i = 0; i < comisiones.size(); i++) {
+				materia = comisiones.get(i).getMateria();
+				turno = comisiones.get(i).getTurno();
+				if(comisiones.get(i).getMateria().equals(materia) || comisiones.get(i).getTurno().equals(turno)) {
+					return false;
+				}
+			}
+		}
+		return cicloLectivo.agregarComision(comision);
+
+	}
+
+	private CicloLectivo exsiteCicloLectivoEnElArray(CicloLectivo cicloLectivo) {
+		for (int i = 0; i < this.cicloLectivos.size(); i++) {
+			if (this.cicloLectivos.get(i).equals(cicloLectivo)) {
+				return cicloLectivo;
+			}
+		}
+		return null;
 	}
 
 }

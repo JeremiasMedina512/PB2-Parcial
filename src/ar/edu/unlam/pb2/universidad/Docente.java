@@ -4,15 +4,15 @@ import java.util.Objects;
 
 public class Docente {
 
-	private Integer dniDocente;
+	private Integer idDocente;
 
-	public Docente(Integer dniDocente) {
-		this.dniDocente = dniDocente;
+	public Docente(Integer idDocente) {
+		this.idDocente = idDocente;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(dniDocente);
+		return Objects.hash(idDocente);
 	}
 
 	@Override
@@ -24,7 +24,7 @@ public class Docente {
 		if (getClass() != obj.getClass())
 			return false;
 		Docente other = (Docente) obj;
-		return Objects.equals(dniDocente, other.dniDocente);
+		return Objects.equals(idDocente, other.idDocente);
 	}
 	
 	

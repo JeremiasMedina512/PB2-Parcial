@@ -53,25 +53,25 @@ public class AlumnoTest {
 	@Test
 	public void inscribirAlumnoAComision() {
 		Boolean resultadoEsperado = false;
-
+//		Alumno
 		Alumno alumno = null;
 		Integer idAlumno = 1;
 		String nombreAlumno = "Jeremias";
 		String apellidoAlumno = "Medina";
 		LocalDate fechaDeNacimiento = LocalDate.of(2000, 4, 12);
 		LocalDate fechaDeIngreso = LocalDate.of(2000, 1, 1);
-
+//		Materia
 		Materia materia = null;
 		Integer idMateria = 1;
 		String nombreMateria = "PB1";
-
+//		Ciclo Lectivo
 		CicloLectivo cicloLectivo = null;
 		Integer idCicloLectivo = 1;
 		LocalDate fechaInicioCicloLectivo = LocalDate.of(2023, 8, 14);
 		LocalDate fechaFinalizacionCicloLectivo = LocalDate.of(2023, 12, 1);
 		LocalDate fechaInicioInscripcion = LocalDate.of(2023, 8, 2);
 		LocalDate fechaFinalizacionInscripcion = LocalDate.of(2023, 8, 4);
-
+//		Comision
 		Comision comision = null;
 		Integer idComision = 1;
 		Turno turno = Turno.Mañana;
@@ -80,15 +80,13 @@ public class AlumnoTest {
 		materia = new Materia(idMateria, nombreMateria);
 		cicloLectivo = new CicloLectivo(idCicloLectivo, fechaInicioCicloLectivo, fechaFinalizacionCicloLectivo,
 				fechaInicioInscripcion, fechaFinalizacionInscripcion);
-		
-		comision = new Comision (idComision, materia, turno);
+		comision = new Comision(idComision, materia, turno);
 
 		Universidad unlam = new Universidad("Unlam");
-		Alumno alumnoPrimero = new Alumno(idAlumno, nombreAlumno, apellidoAlumno, fechaDeNacimiento, fechaDeIngreso);
-	
-		unlam.agregarAlumno(alumnoPrimero);
-		unlam.agregarComision(comision);
-		
+
+		unlam.agregarAlumno(alumno);
+		unlam.agregarCicloLectivo(cicloLectivo);
+		cicloLectivo.agregarComision(comision);
 
 		assertFalse(resultadoEsperado);
 	}

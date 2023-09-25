@@ -22,6 +22,22 @@ public class CicloLectivo {
 		this.fechaFinalizacionInscripcion = fechaFinalizacionInscripcion;
 		this.fechaInicioCicloLectivo = fechaInicioCicloLectivo;
 		this.fechaFinalizacionCicloLectivo = fechaFinalizacionCicloLectivo;
+		this.comisiones = new ArrayList<>();
+	}
+
+	public ArrayList<Comision> getComisiones() {
+		return comisiones;
+	}
+
+	public Boolean agregarComision(Comision comision) {
+		if (this.comisiones.size() != 0) {
+			for (int i = 0; i < this.comisiones.size(); i++) {
+				if ((this.comisiones.get(i) != null) && this.comisiones.get(i).equals(comision)) {
+					return false;
+				}
+			}
+		}
+		return this.comisiones.add(comision);
 	}
 
 	public Boolean lasFechasSeSuperponen(CicloLectivo cicloLectivoCopia) {
